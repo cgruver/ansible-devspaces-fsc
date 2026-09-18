@@ -20,7 +20,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
 rules:
   - apiGroups:
-      - "argoproj.io/v1beta1"
+      - "argoproj.io"
     resources:
       - "argocds"
     verbs:
