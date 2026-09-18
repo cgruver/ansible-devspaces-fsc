@@ -1,20 +1,12 @@
 gitops:
-  repoURL: https://github.com/rhpds/ocp-dev-days-rdshw-gitops.git
-  targetRevision: main
-
-cluster:
-  subdomain: ""
-  apiServer: ""
-
-common:
-  password: ""
+  repoURL: https://github.com/cgruver/ansible-devspaces-fsc.git
+  targetRevision: wip
 
 openshiftPipelines:
   name: openshift-pipelines
   namespace: openshift-pipelines
 
 devspaces:
-  enabled: true
   name: devspaces
   namespace: openshift-devspaces
 

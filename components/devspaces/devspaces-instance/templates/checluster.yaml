@@ -9,9 +9,6 @@ metadata:
 spec:
   components:
     cheServer:
-      extraProperties:
-        CHE_OIDC_USERNAME__CLAIM: email
-        CHE_FORCE_REFRESH_PERSONAL_ACCESS_TOKEN: "true"
       debug: false
       logLevel: INFO
     dashboard: {}
@@ -40,11 +37,6 @@ spec:
       limits:
         cpu: {{ .Values.devEnvironments.resources.limits.cpu | quote }}
         memory: {{ .Values.devEnvironments.resources.limits.memory | quote }}
-    # containerBuildConfiguration:
-    #   openShiftSecurityContextConstraint: container-build
-    # containerRunConfiguration:
-    #   openShiftSecurityContextConstraint: container-run
-    # disableContainerBuildCapabilities: false
     disableContainerRunCapabilities: false
     defaultEditor: {{ .Values.devEnvironments.defaultEditor }}
     defaultNamespace:
@@ -55,14 +47,6 @@ spec:
       pvcStrategy: per-workspace
     persistUserHome:
       enabled: false
-  gitServices:
-    gitlab:
-      - secretName: gitlab-oauth-config
-        endpoint: https://{{ .Values.gitlab.host }}
-  # DevSpaces authenticates via OpenShift OAuth — the operator's gateway proxy
-  # hardcodes provider="openshift" and ignores external OIDC overrides. Workshop
-  # users log in through the "developers" OpenID provider added to the cluster
-  # OAuth CR (see openshift-oauth/ chart), which redirects to Keycloak.
   networking:
     auth:
       gateway:

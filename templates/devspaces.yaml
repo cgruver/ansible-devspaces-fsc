@@ -1,4 +1,3 @@
-{{- if .Values.devspaces.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 {{ include "app-of-apps.metadata" (dict "name" .Values.devspaces.name "namespace" .Values.argocd.namespace "syncWave" "1") }}
@@ -8,14 +7,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: cluster/devspaces
+    path: components/devspaces
     repoURL: {{ .Values.gitops.repoURL }}
     targetRevision: {{ .Values.gitops.targetRevision }}
-    helm:
-      valuesObject:
-        devspaces-instance:
-          gitlab:
-            host: {{ .Values.gitlab.host }}
-          openVSXURL: https://open-vsx-server-{{ .Values.openvsx.namespace }}.{{ .Values.cluster.subdomain }}
 {{ include "app-of-apps.syncPolicy" . | indent 2 }}
-{{- end }}
