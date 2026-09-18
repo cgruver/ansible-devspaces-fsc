@@ -27,3 +27,9 @@ argocd:
   enabled: true
   instance:
     syncwave: "0"
+
+litemaas:
+  apiKey: ""
+  apiUrl: ""
+  model: ""
+openVSXURL: ""
