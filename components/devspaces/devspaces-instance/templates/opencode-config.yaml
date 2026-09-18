@@ -20,12 +20,12 @@ data:
           "npm": "@ai-sdk/openai-compatible",
           "name": "lite-maas",
           "options": {
-            "baseURL": "{{ .Values.litemaas.apiUrl }}",
-            "apiKey": "{{ .Values.litemaas.apiKey }}"
+            "baseURL": {{ .Values.litemaas.apiUrl | quote }},
+            "apiKey": {{ .Values.litemaas.apiKey | quote }}
           },
           "models": {
-            "{{ .Values.litemaas.model }}": {
-              "name": "{{ .Values.litemaas.model }}",
+            {{ .Values.litemaas.model | quote }}: {
+              "name": {{ .Values.litemaas.model | quote }},
               "limit": {
                 "context": 262144,
                 "output": 262144
