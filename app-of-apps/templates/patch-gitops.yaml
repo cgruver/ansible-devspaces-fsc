@@ -22,7 +22,7 @@ rules:
   - apiGroups:
       - "argoproj.io/v1beta1"
     resources:
-      - "argocd"
+      - "argocds"
     verbs:
       - "get"
       - "list"
