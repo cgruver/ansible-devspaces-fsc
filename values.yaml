@@ -1,3 +1,5 @@
+argocd:
+  namespace: openshift-gitops
 gitops:
   repoURL: https://github.com/cgruver/ansible-devspaces-fsc.git
   targetRevision: wip
