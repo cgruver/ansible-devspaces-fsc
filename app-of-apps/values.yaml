@@ -1,0 +1,21 @@
+argocd:
+  namespace: openshift-gitops
+gitops:
+  repoURL: https://github.com/cgruver/ansible-devspaces-fsc.git
+  targetRevision: wip
+
+openshiftPipelines:
+  name: openshift-pipelines
+  namespace: openshift-pipelines
+
+devspaces:
+  name: devspaces
+  namespace: openshift-devspaces
+
+openvsx:
+  name: openvsx
+  namespace: che-openvsx
+
+workspaceImages:
+  name: workspace-images
+  namespace: workspace-images

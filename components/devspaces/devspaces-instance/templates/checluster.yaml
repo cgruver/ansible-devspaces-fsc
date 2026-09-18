@@ -1,0 +1,55 @@
+---
+apiVersion: org.eclipse.che/v2
+kind: CheCluster
+metadata:
+  name: {{ include "devspaces-instance.name" . }}
+  namespace: {{ include "devspaces-instance.namespace" . }}
+  annotations:
+    {{- include "devspaces-instance.argocd-syncwave" . | nindent 4 }}
+spec:
+  components:
+    cheServer:
+      debug: false
+      logLevel: INFO
+    dashboard: {}
+    devWorkspace: {}
+    devfileRegistry: {}
+    imagePuller:
+      enable: false
+    metrics:
+      enable: true
+    pluginRegistry:
+      openVSXURL: {{ .Values.openVSXURL | quote }}
+  containerRegistry: {}
+  devEnvironments:
+    startTimeoutSeconds: {{ .Values.devEnvironments.startTimeoutSeconds }}
+    secondsOfRunBeforeIdling: {{ .Values.devEnvironments.secondsOfRunBeforeIdling }}
+    maxNumberOfWorkspacesPerUser: {{ .Values.devEnvironments.maxNumberOfWorkspacesPerUser }}
+    maxNumberOfRunningWorkspacesPerUser: {{ .Values.devEnvironments.maxNumberOfRunningWorkspacesPerUser }}
+    defaultContainerResources:
+      limits:
+        cpu: {{ .Values.devEnvironments.resources.limits.cpu | quote }}
+        memory: {{ .Values.devEnvironments.resources.limits.memory | quote }}
+      requests:
+        cpu: {{ .Values.devEnvironments.resources.requests.cpu | quote }}
+        memory: {{ .Values.devEnvironments.resources.requests.memory | quote }}
+    containerResourceCaps:
+      limits:
+        cpu: {{ .Values.devEnvironments.resources.limits.cpu | quote }}
+        memory: {{ .Values.devEnvironments.resources.limits.memory | quote }}
+    disableContainerRunCapabilities: false
+    defaultEditor: {{ .Values.devEnvironments.defaultEditor }}
+    defaultNamespace:
+      autoProvision: true
+      template: <username>-devspaces
+    secondsOfInactivityBeforeIdling: {{ .Values.devEnvironments.secondsOfInactivityBeforeIdling }}
+    storage:
+      pvcStrategy: per-workspace
+    persistUserHome:
+      enabled: false
+  networking:
+    auth:
+      gateway:
+        configLabels:
+          app: che
+          component: che-gateway-config
