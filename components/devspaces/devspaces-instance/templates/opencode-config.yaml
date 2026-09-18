@@ -14,18 +14,18 @@ data:
   opencode.json: |
     {
       "$schema": "https://opencode.ai/config.json",
-      "model": "lite-maas/{{ .Values.aiAssistantModel }}",
+      "model": "lite-maas/{{ .Values.litemaas.model }}",
       "provider": {
         "lite-maas": {
           "npm": "@ai-sdk/openai-compatible",
           "name": "lite-maas",
           "options": {
-            "baseURL": "_LLM_BASE_URL_",
-            "apiKey": "_LLM_API_KEY_"
+            "baseURL": "{{ .Values.litemaas.apiUrl }}",
+            "apiKey": "{{ .Values.litemaas.apiKey }}"
           },
           "models": {
-            "{{ .Values.aiAssistantModel }}": {
-              "name": "{{ .Values.aiAssistantModel }}",
+            "{{ .Values.litemaas.model }}": {
+              "name": "{{ .Values.litemaas.model }}",
               "limit": {
                 "context": 262144,
                 "output": 262144

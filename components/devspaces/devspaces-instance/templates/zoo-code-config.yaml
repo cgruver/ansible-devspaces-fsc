@@ -14,12 +14,12 @@ data:
   zoo-code-settings.json: |
     {
       "providerProfiles": {
-        "currentApiConfigName": "{{ .Values.aiAssistantModel }}",
+        "currentApiConfigName": "{{ .Values.litemaas.model }}",
         "apiConfigs": {
-          "{{ .Values.aiAssistantModel }}": {
-            "openAiBaseUrl": "_LLM_BASE_URL_",
-            "openAiApiKey": "_LLM_API_KEY_",
-            "openAiModelId": "{{ .Values.aiAssistantModel }}",
+          "{{ .Values.litemaas.model }}": {
+            "openAiBaseUrl": "{{ .Values.litemaas.apiUrl }}",
+            "openAiApiKey": "{{ .Values.litemaas.apiKey }}",
+            "openAiModelId": "{{ .Values.litemaas.model }}",
             "openAiCustomModelInfo": {
               "maxTokens": -1,
               "contextWindow": 262144,
@@ -30,15 +30,15 @@ data:
             },
             "openAiHeaders": {},
             "apiProvider": "openai",
-            "id": "{{ .Values.aiAssistantModel }}"
+            "id": "{{ .Values.litemaas.model }}"
           }
         },
         "modeApiConfigs": {
-          "architect": "{{ .Values.aiAssistantModel }}",
-          "code": "{{ .Values.aiAssistantModel }}",
-          "ask": "{{ .Values.aiAssistantModel }}",
-          "debug": "{{ .Values.aiAssistantModel }}",
-          "orchestrator": "{{ .Values.aiAssistantModel }}"
+          "architect": "{{ .Values.litemaas.model }}",
+          "code": "{{ .Values.litemaas.model }}",
+          "ask": "{{ .Values.litemaas.model }}",
+          "debug": "{{ .Values.litemaas.model }}",
+          "orchestrator": "{{ .Values.litemaas.model }}"
         },
         "migrations": {
           "rateLimitSecondsMigrated": true,
