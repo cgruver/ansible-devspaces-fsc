@@ -25,6 +25,10 @@ resources:
     cpu: "500m"
     memory: "512Mi"
 
+networkPolicy:
+  # Enable or disable the creation of a NetworkPolicy for the global pull secret job
+  enabled: true
+
 # Additional labels to add to all resources
 labels: {}
 
