@@ -38,7 +38,7 @@ spec:
             httpGet:
               path: /user
               port: {{ .Values.server.port }}
-            initialDelaySeconds: 3
+            initialDelaySeconds: 30
             periodSeconds: 10
             timeoutSeconds: 3
           env:
